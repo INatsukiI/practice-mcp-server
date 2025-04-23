@@ -4,7 +4,6 @@ import type { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdi
 
 export class McpServerManager {
   private readonly server: McpServer;
-  private readonly tools: Map<string, IMcpTool<any>> = new Map();
 
   constructor(name: string, version: string) {
     this.server = new McpServer({
@@ -27,6 +26,5 @@ export class McpServerManager {
    */
   async connect(transport: StdioServerTransport): Promise<void> {
     await this.server.connect(transport);
-    console.log(`MCPサーバーが起動しました。登録済みツール: ${Array.from(this.tools.keys()).join(", ")}`);
   }
 }
